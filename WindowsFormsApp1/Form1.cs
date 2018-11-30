@@ -21,6 +21,7 @@ namespace WindowsFormsApp1
             txtNumber1.Text = "";
             txtNumber2.Text = "";
             txtResolved.Text = "";
+            txtErrors.Text = "";
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -49,6 +50,49 @@ namespace WindowsFormsApp1
             this.Close();
         }
 
-      
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            //decimal is like double, but more precise
+            decimal number1 = 0, number2 = 0;
+            bool good1 = false, good2 = false;
+
+            //will clear the box with errors
+            txtErrors.Text = "";
+
+            //first number can't be blank
+            if (String.IsNullOrWhiteSpace(txtNumber1.Text))
+            {
+                //concatenation - in case there's another error message - but this one will be the first
+                txtErrors.Text += "First number cannot be blank.\n";
+            }
+            else if (!(Decimal.TryParse(txtNumber1.Text, out number1)))
+            {
+                txtErrors.Text += "First number is not valid.\n";
+            }
+            else
+            {
+                good1 = true;
+            }
+
+            //second number can't be blank
+            if (String.IsNullOrWhiteSpace(txtNumber2.Text))
+            {
+                //concatenation - in case there's another error message - but this one will be the first
+                txtErrors.Text += "Second number cannot be blank.\n";
+            }
+            else if (!(Decimal.TryParse(txtNumber2.Text, out number2)))
+            {
+                txtErrors.Text += "Second number is not valid.\n";
+            }
+            else
+            {
+                good2 = true;
+            }
+
+            if (good1&&good2)
+            {
+                txtResolved.Text = String.Format("{0}+{1}={2}", number1, number2, number1+number2);
+            }
+        }
     }
 }
