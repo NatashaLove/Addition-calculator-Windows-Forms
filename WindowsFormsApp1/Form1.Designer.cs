@@ -202,6 +202,7 @@
             this.radGreen.TabIndex = 2;
             this.radGreen.Text = "green";
             this.radGreen.UseVisualStyleBackColor = true;
+            this.radGreen.CheckedChanged += new System.EventHandler(this.radGreen_CheckedChanged);
             // 
             // radBlue
             // 
@@ -212,6 +213,7 @@
             this.radBlue.TabIndex = 1;
             this.radBlue.Text = "blue";
             this.radBlue.UseVisualStyleBackColor = true;
+            this.radBlue.CheckedChanged += new System.EventHandler(this.radBlue_CheckedChanged);
             // 
             // radDefault
             // 
@@ -224,6 +226,8 @@
             this.radDefault.TabStop = true;
             this.radDefault.Text = "default";
             this.radDefault.UseVisualStyleBackColor = true;
+            this.radDefault.CheckedChanged += new System.EventHandler(this.radDefault_CheckedChanged);
+            this.radDefault.ForeColorChanged += new System.EventHandler(this.radDefault_CheckedChanged);
             // 
             // txtErrors
             // 

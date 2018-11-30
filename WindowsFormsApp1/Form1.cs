@@ -58,6 +58,7 @@ namespace WindowsFormsApp1
 
             //will clear the box with errors
             txtErrors.Text = "";
+            txtResolved.Text = "";
 
             //first number can't be blank
             if (String.IsNullOrWhiteSpace(txtNumber1.Text))
@@ -92,7 +93,38 @@ namespace WindowsFormsApp1
             if (good1&&good2)
             {
                 txtResolved.Text = String.Format("{0}+{1}={2}", number1, number2, number1+number2);
+
+                if (chkNewForm.Checked)
+                {
+                    //creates a new form
+                    Form2 f = new Form2(number1, number2);
+                    //opens the new form
+                    f.ShowDialog();
+                }
             }
         }
+
+        //colors of Error message
+        private void radDefault_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radDefault.Checked)
+            {
+                txtErrors.ForeColor = Form1.DefaultForeColor;
+            }
+        }
+
+        private void radBlue_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radBlue.Checked)
+            {
+                txtErrors.ForeColor = System.Drawing.Color.Blue;
+            }
+        }
+
+        private void radGreen_CheckedChanged(object sender, EventArgs e)
+        {
+            txtErrors.ForeColor = System.Drawing.Color.Green;
+        }
+
     }
 }
